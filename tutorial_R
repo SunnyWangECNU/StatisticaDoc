@@ -1,12 +1,13 @@
 \documentclass{book}
-\title{statistica 101}
+\title{Appunti corso statistica ed R, prima parte}
 \author{Andrea Berardi - and.be.like@gmail.com}
-
- Author:	Andrea Berardi
+\begin{document}
 # Email:	and.be.like@gmail.com
 # Version:	0.0.3
 # Purpose:	Attempt to write a short, easy and examples-oriented guide to statistics and probability
 # Notes:	This document is still far to be ready in order to be shared
+
+\maketitle
 
 TO DO:
 * Generale
@@ -17,7 +18,7 @@ TO DO:
 	* Distribuzioni fondamentali, discrete ed ac
 	** Inferenza statistica e teoria dei test
 
-Appunti corso statistica ed R, prima parte.
+
 
 
 				* Statistica descrittiva *
@@ -185,3 +186,4 @@ Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzit
 > fitted=matrix(fit.them(griglia,model.2),byrow=F,nrow=50)
 > persp(gg,hh,fitted,theta=-55,col='lightblue')
 </code>
+\end{document}
