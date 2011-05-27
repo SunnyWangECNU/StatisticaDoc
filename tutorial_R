@@ -55,8 +55,8 @@ Uno degli indici più utilizzato e noto è la media aritmetica semplice:
 
 La media è un semplicissimo indice lineare per qualsiasi carattere non qualitativo sconnesso, che sintetizza in un numero (non puro) il valore centrale della distribuzione del carattere sulle unità osservate. Ovviamente esistono molti altri tipi di medie (geometriche, quadratiche, pesate, etc).
 
-Un altro indice particolarmente importante e robusto, per caratteri qualitativi ordinati o quantitativi, è la mediana, un indice che divide la distribuzione in due parti di uguale numerosità; in altri termini, presenta valori inferiori alla mediana il 50% del collettivo osservato (si taglia la funzione di ripartizione a metà lungo l'asse delle ordinate).
-In realtà la mediana è un caso particolare di un altro indice, ovvero il percentile, che, come intuibile dal nome, divide la distribuzione in parti percentuali, ed un altra sintesi basata su di esso è il quartile, che divide la distribuzione in quarti: il primo quartile lascia alla propria sinistra il 25% della popolazione, il terzo ne lascia il 25% alla propria destra; il secondo quartile è proprio la mediana.
+Un altro indice particolarmente importante e robusto, per caratteri qualitativi ordinati o quantitativi, è la mediana, un indice che divide la distribuzione in due parti di uguale numerosità; in altri termini, presenta valori inferiori alla mediana il 50/% del collettivo osservato (si taglia la funzione di ripartizione a metà lungo l'asse delle ordinate).
+In realtà la mediana è un caso particolare di un altro indice, ovvero il percentile, che, come intuibile dal nome, divide la distribuzione in parti percentuali, ed un altra sintesi basata su di esso è il quartile, che divide la distribuzione in quarti: il primo quartile lascia alla propria sinistra il 25/% della popolazione, il terzo ne lascia il 25/% alla propria destra; il secondo quartile è proprio la mediana.
 Da questi valori si disegna uno dei grafici fondamentali della descrittiva, il boxplot.
 
 	-R-
@@ -162,7 +162,7 @@ Note sulla terminologia:
 # cosa restituisce R di interessante? innanzitutto la formula del modello, da verificare (eventuali mistyping), dopodichè alcune statistiche sui residui del modello (memo: residuo=valore fittato - valore osservato), dopodichè arriva la parte interessante.
 # innanzitutto, l'intercetta è una semplice variabile matematica determinata per sottrazione, ovvero rappresenta quel valore che assume la risposta quando la predittiva è nulla; il coefficiente dell'esplicativa invece rappresenta (nel caso univariato) il coefficiente angolare della retta di regressione, ovvero la variazione determinata nella risposta da un incremento unitario della variabile esplicativa.
 # (due parole due sulla significatività dei parametri)
-# la capacità di adattamento del modello ai dati (e non il viceversa!) è descritta, come già detto, dall'R quadro. In questo caso esso è pari a 0.94, ad indicare che ben il 94% della variabilità totale della risposta è spiegato dal modello, ovvero viene "lasciato" al caso solo il 6% della variabilità della risposta.
+# la capacità di adattamento del modello ai dati (e non il viceversa!) è descritta, come già detto, dall'R quadro. In questo caso esso è pari a 0.94, ad indicare che ben il 94/% della variabilità totale della risposta è spiegato dal modello, ovvero viene "lasciato" al caso solo il 6/% della variabilità della risposta.
 # (Questo sembra un risultato molto incoraggiante, ma nel caso di modelli previsivi si cerca di massimizzare la varianza spiegata, in modo da avere il minor margine di errore casuale possibile. Questo indice che sembra tanto alto viene letteralmente surclassato da un modello solo di poco più complicato, capace di portare l'R quadro a 0.98: >v=log(Volume); h=log(Height); gsq=2*log(Girth); summary(lm(v~gsq+h)) )
 # Ovviamente la rappresentazione del modello è molto intuibile, e infatti la forza della regressione lineare semplice poggia proprio sull'"occhio", ovvero è la formalizzazione di una procedura che, intuitivamente, si farebbe anche ignorando totalmente la statistica; da un punto di vista grafico infatti:
 > plot(Girth,Volume)
@@ -182,7 +182,7 @@ Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzit
 > hh=seq(min(Height),max(Height),length.out=50)
 > gg=seq(min(Girth),max(Girth),length.out=50)
 > griglia=expand.grid(gg,hh)
-> fit.them=function(data,model) {as.matrix(cbind(1,data))%*%as.matrix(model$coefficients)}
+> fit.them=function(data,model) {as.matrix(cbind(1,data))/%*/%as.matrix(model$coefficients)}
 > fitted=matrix(fit.them(griglia,model.2),byrow=F,nrow=50)
 > persp(gg,hh,fitted,theta=-55,col='lightblue')
 </code>
