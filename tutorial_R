@@ -1,4 +1,8 @@
-# Author:	Andrea Berardi
+\documentclass{book}
+\title{statistica 101}
+\author{Andrea Berardi - and.be.like@gmail.com}
+
+ Author:	Andrea Berardi
 # Email:	and.be.like@gmail.com
 # Version:	0.0.3
 # Purpose:	Attempt to write a short, easy and examples-oriented guide to statistics and probability
