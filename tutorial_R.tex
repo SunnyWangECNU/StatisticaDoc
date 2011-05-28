@@ -182,8 +182,59 @@ Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzit
 > hh=seq(min(Height),max(Height),length.out=50)
 > gg=seq(min(Girth),max(Girth),length.out=50)
 > griglia=expand.grid(gg,hh)
-> fit.them=function(data,model) {as.matrix(cbind(1,data))\%*\%as.matrix(model$coefficients)}
+> fit.them=function(data,model) {as.matrix(cbind(1,data))%*%as.matrix(model$coefficients)}
 > fitted=matrix(fit.them(griglia,model.2),byrow=F,nrow=50)
 > persp(gg,hh,fitted,theta=-55,col='lightblue')
 </code>
+
+		* Probabilità *
+
+La probabilità è strettamente legato alla statistica, un quanto permette di studiare la casualità, e quindi di poter analizzare nel complesso le componenti sistematiche ed aleatorie di un certo fenomeno. In questo ambito, più che dilungarsi in ambito tecnico, si vedranno le definizioni fondamentali della probabilità: definizione del concetto di probabilità, assiomi di Kolmogorov, qualche teorema interessante come quello di Bayes, le distribuzioni di probabilità più note e le caratteristiche delle variabili aleatorie.
+Il concetto stesso di probabilità è molto complesso, e diversi approcci hanno portato a diverse definizioni, che sono tuttavia compatibili ed in un certo senso complementari tra loro. E' interessante notare che la disciplina stessa è nata dalla necessità di fare affermazioni in ambito ludico: i primissimi studi in questo campo sono infatti di Girolamo Cardano, esposti nel "Liber de ludo aleae" del 1526, mentre la formalizzazione assiomatica moderna è stata perfezionata solo nel 1933 da Kolmogorov.
+
+1. La definizione classica:
+La probabilità di un evento è il rapporto tra il numero di casi favorevoli all'evento ed il numero dei casi possibili, purchè essi siano tutti equiprobabili.
+
+<code>
+ *	P(A)=n_A/n
+
+Questa è la prima definizione dal punto di vista cronologico, ed è quella più facilmente intuibile. E' chiarissima la sua relazione con il gioco dei dadi!
+I limiti di questo approccio sono tuttavia lampanti: il fenomeno deve essere completamente noto, i casi possibili devono essere in numero finito, e soprattutto questi devono essere equiprobabili. Inoltre, il concetto di probabilità viene utilizzato all'interno della stessa definizione!
+Ma facciamo un esempio, considerando il lancio di un dado.
+Supponendo di lanciare un dado bilanciato a sei facce, quale sarà la probabilità di ottenere un numero pari?
+I casi possibili sono: {1, 2, 3, 4, 5, 6}, tutti equiprobabili perchè il dado è bilanciato.
+Si ottiene quindi che i casi favorevoli all'evento {otterrò un numero pari} sono {2,4,6}, ovvero 3/6 = 0.5, ovvero si ha una probabilità pari a 0.5 di ottenere un numero pari dal lancio di un dado bilanciato.
+Si nota che, sebbene sia di uso comune, è opportuno riferirsi alle probabilità con frazioni piuttosto che con percentuali, in quanto il loro uso può essere spesso fuorviante e dare adito ad interpretazioni non adeguate.
+
+Da questa definizione segue che:
+1.1. la probabilità di un evento è un numero compreso tra 0 ed 1
+1.2. la probabilità dell'evento certo è pari ad 1
+1.3. la probabilità di due eventi incompatibili (ovvero che non possono verificarsi contemporaneamente) è pari alla somma delle due rispettive probabilità
+
+Facciamo dunque un altro esempio, sempre considerando il lancio di un dado: qual è la probabilità di ottenere un risultato diverso da 6?
+primo approccio - i casi favorevoli all'evento sono: {1, 2, 3, 4, 5} da cui si ricava che 5/6 è la probabilità di questo evento
+secondo approccio - poichè la probabilità dell'evento certo è 1, e gli eventi {ottenere un risultato diverso da 6} ed {ottenere 6} sono due eventi incompatibili e necessari, la loro unione sarà proprio l'evento certo: infatti tirando un dado, otterrò 6 oppure un risultato diverso da 6. Quindi, poichè P{ottenere 6}=1/6, e poichè P{ottenere 6} + P{ottenere un numero diverso da 6} = P{evento certo} = 1, segue che P{ottenere un numero diverso da 6} = P{evento certo} - P{ottenere 6} = 1 - 1/6 = 5/6
+Benchè questo secondo approccio sembri molto macchinoso applicato ad un caso così semplice, è spesso l'unico possibile in molte situazioni, e aiuta a capire quale sia la logica utilizzata molto spesso nei calcoli probabilistici.
+
+2. La definizione frequentista:
+Ipotizzando di poter ripetere lo stesso esperimento infinite volte nelle stesse condizioni, la probabilità di un evento è il limite a cui tende la frequenza relativa dei casi favorevoli all'evento al crescere del numero degli esperimenti, ovvero
+
+<code>
+ *	P(A)= lim{n to Inf} n_A/n
+</code>
+
+Questa definizione, di facile intuizione come quella classica, supera diversi limiti: innanzitutto la definizione non è più circolare, gli eventi non devono essere in numero finito ed inoltre non devono essere tutti necessariamente equiprobabili.
+E' importante notare però che non sempre si hanno esperimenti che si possono - teoricamente - ripetere all'infinito.
+Anche da questa definizione seguono le tre proprietà della probabilità descritte precedentemente.
+
+3. La definizione soggettiva:
+La probabilità di un evento è il prezzo che un individuo ritiene equo pagare per ricevere 1 se l'evento si realizza e 0 se esso non si realizzi; le probabilità degli eventi devono essere distribuite in maniera tale che non sia possibile ottenere una vincita certa od una perdita certa (condizione di coerenza).
+
+Anche da questa definizione derivano le tre proprietà fondamentali della probabilità:
+3.1 la probabilità di un evento deve essere un numero compreso tra 0 ed 1, altrimenti si avrebbe vincita certa o perdita certa
+3.2 
+
+
 \end{document}
+
+
