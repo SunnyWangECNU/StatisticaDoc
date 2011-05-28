@@ -1,62 +1,68 @@
 \documentclass{book}
+
+\usepackage{Tabbing}
+
 \title{Appunti corso statistica ed R, prima parte}
 \author{Andrea Berardi - and.be.like@gmail.com}
 \begin{document}
-# Email:	and.be.like@gmail.com
-# Version:	0.0.3
-# Purpose:	Attempt to write a short, easy and examples-oriented guide to statistics and probability
-# Notes:	This document is still far to be ready in order to be shared
+
+% Email:		and.be.like@gmail.com
+% Version:		0.0.3
+% Purpose:		Attempt to write a short, easy and examples-oriented guide to statistics and probability
+% Notes:		This document is still far to be ready in order to be shared
 
 \maketitle
 
-TO DO:
-* Generale
-	* Revisione completa
-	* Strutturare in modo intelligente, organizzato ed organico
-* Argomenti
-	** Probabilità: definizioni, variabili aleatorie
-	* Distribuzioni fondamentali, discrete ed ac
-	** Inferenza statistica e teoria dei test
+\begin{Tabbing}
+TO DO: \TAB=								\\
+\TAB> * Generale \TAB= 							\\
+\TAB> \TAB> * Revisione completa 					\\
+\TAB> \TAB> * Strutturare in modo intelligente, organizzato ed organico \\
+\TAB> * Argomenti 							\\
+\TAB> \TAB> * Probabilit\`{a}: definizioni, variabili aleatorie		\\
+\TAB> \TAB> * Distribuzioni fondamentali, discrete ed ac		\\
+\TAB> \TAB> * Inferenza statistica e teoria dei test 			\\
+
+\end{Tabbing}
 
 
 
-
-				* Statistica descrittiva *
-
-La statistica descrittiva nasce dal bisogno e dalla necessità di uno studio sistematico dei fenomeni reali, per una loro quantificazione numerica, dalla volontà di prevedere, sia all'indietro che in avanti, il comportamento di determinati caratteri, e per capire, quando si hanno insufficienti conoscenze, come agiscono e reagiscono dati elementi in situazioni stabilite.
-La base della descrittiva è, ovviamente, l'osservazione: si suppone cioè che l'unità oggetto di studio (cioè l'"unità statistica") esprima un certo "carattere" con una propria "modalità", e che essa sia OSSERVABILE.
-Ad esempio, un individuo può presentare la modalità "azzurro" per il carattere "colore degli occhi". Si nota che per quanto riguarda le unità statistiche e i vari caratteri osservati si possono trovare gli elementi più disparati.
-Volendo fare una qualsiasi indagine per ottenere informazioni su un carattere di interesse in una popolazione, ovviamente in linea generale non si è interessati a conoscere le singole modalità per ogni individuo del collettivo osservato, ma si cerca di definire dei riassunti di tali dati che permettano di descrivere sinteticamente gli individui osservati o, nel caso di campionamento da popolazioni finite, di fare affermazioni probabilistiche sull'intera popolazione.
+\huge{Statistica descrittiva}
+\normalsize \\ \\
+La statistica descrittiva nasce dal bisogno e dalla necessit\`{a} di uno studio sistematico dei fenomeni reali, per una loro quantificazione numerica, dalla volont\`{a} di prevedere, sia all'indietro che in avanti, il comportamento di determinati caratteri, e per capire, quando si hanno insufficienti conoscenze, come agiscono e reagiscono dati elementi in situazioni stabilite.
+La base della descrittiva \`{e}, ovviamente, l'osservazione: si suppone cio\`{e} che l'unit\`{a} oggetto di studio (cio\`{e} l'"unit\`{a} statistica") esprima un certo "carattere" con una propria "modalit\`{a}", e che essa sia \emph{osservabile}.
+Ad esempio, un individuo può presentare la modalit\`{a} "azzurro" per il carattere "colore degli occhi". Si nota che per quanto riguarda le unit\`{a} statistiche e i vari caratteri osservati si possono trovare gli elementi più disparati.
+Volendo fare una qualsiasi indagine per ottenere informazioni su un carattere di interesse in una popolazione, ovviamente in linea generale non si \`{e} interessati a conoscere le singole modalit\`{a} per ogni individuo del collettivo osservato, ma si cerca di definire dei riassunti di tali dati che permettano di descrivere sinteticamente gli individui osservati o, nel caso di campionamento da popolazioni finite, di fare affermazioni probabilistiche sull'intera popolazione.
 Gli indici di sintesi in letteratura sono veramente numerosi, ma in questa sede ci si limita a prendere in esame solo quelli fondamentali che serviranno nel proseguo della lezione.
 Gli indici descrittivi ovviamente dipendono dal tipo di carattere in esame: la media aritmetica del colore dei capelli ad esempio non avrebbe alcun senso.
 
-Innanzitutto, è necessario fornire un semplice glossario di base:
-*collettivo: unità statistiche su cui è stata effettuata la rilevazione o l'analisi dati. La sua numerosità si riferisce al numero di unità statistiche (oggetti dell'indagine, ricerca, ..) che comprende;
-*popolazione: insieme di riferimento da cui è estratto il campione statistico; la sua numerosità si indica in genere con N;
-*campione: sottoinsieme della popolazione su cui vengono effettuate delle rilevazioni. Ciò è necessario in quanto l'indagine censuaria assume proporzioni e costi enormi, ed esistono strumenti statistico-probabilistici per estendere ipotesi testate sul campione all'intera popolazione di riferimento. La numerosità campionaria in genere indicata con n;
+Innanzitutto, \`{e} necessario fornire un semplice glossario di base:
+*collettivo: unit\`{a} statistiche su cui \`{e} stata effettuata la rilevazione o l'analisi dati. La sua numerosit\`{a} si riferisce al numero di unit\`{a} statistiche (oggetti dell'indagine, ricerca, ..) che comprende;
+*popolazione: insieme di riferimento da cui \`{e} estratto il campione statistico; la sua numerosit\`{a} si indica in genere con N;
+*campione: sottoinsieme della popolazione su cui vengono effettuate delle rilevazioni. Ciò \`{e} necessario in quanto l'indagine censuaria assume proporzioni e costi enormi, ed esistono strumenti statistico-probabilistici per estendere ipotesi testate sul campione all'intera popolazione di riferimento. La numerosit\`{a} campionaria in genere indicata con n;
 *frequenza (assoluta): numero di volte con cui si presenta un certo fenomeno, ci si riferisce ad essa con f oppure n;
-*frequenza relativa: è pari alla frequenza assoluta sul totale di casi, ovvero n/N oppure f/F. Per la legge debole dei grandi numeri tende, sotto larghe ipotesi, alla probabilità dell'evento. Dalla frequenza realtiva derivano poi le percentuali, con una semplice moltiplicazione per 100;
-*carattere qualitativo: è un carattere non numerico, che può essere ordinato (es. insufficiente, sufficiente, buono) oppure sconnesso (es. blu, rosso, verde).
-*carattere quantitativo: è un carattere espresso numericamente, e può essere di tipo discreto o continuo. E' continuo se il suo campo di variazione è l'insieme dei numeri reali o comunque un insieme numerico denso, ed è discreto altrimenti. Alcuni carattere possono essere espressi sia in modo qualitativo che quantitativo, come ad esempio il peso.
+*frequenza relativa: \`{e} pari alla frequenza assoluta sul totale di casi, ovvero n/N oppure f/F. Per la legge debole dei grandi numeri tende, sotto larghe ipotesi, alla probabilit\`{a} dell'evento. Dalla frequenza realtiva derivano poi le percentuali, con una semplice moltiplicazione per 100;
+*carattere qualitativo: \`{e} un carattere non numerico, che può essere ordinato (es. insufficiente, sufficiente, buono) oppure sconnesso (es. blu, rosso, verde).
+*carattere quantitativo: \`{e} un carattere espresso numericamente, e può essere di tipo discreto o continuo. E' continuo se il suo campo di variazione \`{e} l'insieme dei numeri reali o comunque un insieme numerico denso, ed \`{e} discreto altrimenti. Alcuni carattere possono essere espressi sia in modo qualitativo che quantitativo, come ad esempio il peso.
 
 Prendiamo inizialmente in esame solo gli indici di sintesi per ogni variabile separatamente, ovvero che analizzino distribuzioni semplici.
 
 Indici di locazione
 
-L'indice intuitivamente più semplice è certamente la moda, che si utilizza con qualsiasi tipo di carattere (volendo anche con quantitativi continui, ma perde facilmente di significato).
-La moda è semplicemente la modalità del carattere che si presenta più frequentemente nella distribuzione studiata, ovvero è la modalità corrispondente alla maggiore frequenza assoluta nel collettivo.
+L'indice intuitivamente più semplice \`{e} certamente la moda, che si utilizza con qualsiasi tipo di carattere (volendo anche con quantitativi continui, ma perde facilmente di significato).
+La moda \`{e} semplicemente la modalit\`{a} del carattere che si presenta più frequentemente nella distribuzione studiata, ovvero \`{e} la modalit\`{a} corrispondente alla maggiore frequenza assoluta nel collettivo.
 Una moda può essere "Q", "cercopiteco" o "42". Se nella distribuzione di riferimento esistono più mode essa si dice bimodale, trimodale, etc.
 
-Uno degli indici più utilizzato e noto è la media aritmetica semplice:
+Uno degli indici più utilizzato e noto \`{e} la media aritmetica semplice:
 
 <code>
  *	mu_x=sum{i from 1 to n} x_n over n
 </code>
 
-La media è un semplicissimo indice lineare per qualsiasi carattere non qualitativo sconnesso, che sintetizza in un numero (non puro) il valore centrale della distribuzione del carattere sulle unità osservate. Ovviamente esistono molti altri tipi di medie (geometriche, quadratiche, pesate, etc).
+La media \`{e} un semplicissimo indice lineare per qualsiasi carattere non qualitativo sconnesso, che sintetizza in un numero (non puro) il valore centrale della distribuzione del carattere sulle unit\`{a} osservate. Ovviamente esistono molti altri tipi di medie (geometriche, quadratiche, pesate, etc).
 
-Un altro indice particolarmente importante e robusto, per caratteri qualitativi ordinati o quantitativi, è la mediana, un indice che divide la distribuzione in due parti di uguale numerosità; in altri termini, presenta valori inferiori alla mediana il 50\% del collettivo osservato (si taglia la funzione di ripartizione a metà lungo l'asse delle ordinate).
-In realtà la mediana è un caso particolare di un altro indice, ovvero il percentile, che, come intuibile dal nome, divide la distribuzione in parti percentuali, ed un altra sintesi basata su di esso è il quartile, che divide la distribuzione in quarti: il primo quartile lascia alla propria sinistra il 25\% della popolazione, il terzo ne lascia il 25\% alla propria destra; il secondo quartile è proprio la mediana.
+Un altro indice particolarmente importante e robusto, per caratteri qualitativi ordinati o quantitativi, \`{e} la mediana, un indice che divide la distribuzione in due parti di uguale numerosit\`{a}; in altri termini, presenta valori inferiori alla mediana il 50\% del collettivo osservato (si taglia la funzione di ripartizione a met\`{a} lungo l'asse delle ordinate).
+In realt\`{a} la mediana \`{e} un caso particolare di un altro indice, ovvero il percentile, che, come intuibile dal nome, divide la distribuzione in parti percentuali, ed un altra sintesi basata su di esso \`{e} il quartile, che divide la distribuzione in quarti: il primo quartile lascia alla propria sinistra il 25\% della popolazione, il terzo ne lascia il 25\% alla propria destra; il secondo quartile \`{e} proprio la mediana.
 Da questi valori si disegna uno dei grafici fondamentali della descrittiva, il boxplot.
 
 	-R-
@@ -67,7 +73,7 @@ esempio di un boxplot:
 > boxplot(y1)
 </code>
 
-Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori medi, mediani o modali, ovvero dov'è il centro delle distribuzioni che si osservano. Ma [ESEMPI NECESSARI: anscombe!] questi valori danno solo un'idea di posizione, e non di forma. Infatti a parità di questi indici possono corrispondere forme di distribuzioni molto diverse!
+Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori medi, mediani o modali, ovvero dov'\`{e} il centro delle distribuzioni che si osservano. Ma [ESEMPI NECESSARI: anscombe!] questi valori danno solo un'idea di posizione, e non di forma. Infatti a parit\`{a} di questi indici possono corrispondere forme di distribuzioni molto diverse!
 
 	-R-
 esempio anscombe:
@@ -79,7 +85,7 @@ esempio anscombe:
 > par(mfrow=c(2,2)); plot(y1); plot(y2); plot(y3); plot(y4)
 #calcolandone le medie...
 > apply(cbind(y1,y2,y3,y4),2,mean)
-#risultano essere pressochè uguali (alla seconda cifra decimale)
+#risultano essere pressoch\`{e} uguali (alla seconda cifra decimale)
 > plot(sort(y1)); plot(sort(y2)); plot(sort(y3)); plot(sort(y4))
 #sebbene le forme distribuzionali siano ben diverse
 
@@ -89,14 +95,14 @@ esempio anscombe:
 
 Indici di forma
 
-L'indice fondamentale di descrizione del comportamento di una distribuzione rispetto alla media è la varianza.
-La varianza indica il grado di dispersione intorno alla media della distribuzione in esame: se tutti i punti sono coincidenti questa vale 0, altrimenti una quantità positiva.
+L'indice fondamentale di descrizione del comportamento di una distribuzione rispetto alla media \`{e} la varianza.
+La varianza indica il grado di dispersione intorno alla media della distribuzione in esame: se tutti i punti sono coincidenti questa vale 0, altrimenti una quantit\`{a} positiva.
 
 <code>
  *	sigma_x=sum{i from 1 to n} (x_i - mu_i)**2/(n-1)
 </code>
 
-Tuttavia la varianza è un indice di difficile interpretazione, in parte anche per via della sua unità di misura, il quadrato di quella di partenza. Si usa come indice equivalente la deviazione standard, che è la sua radice quadrata, in quanto essa possiede la stessa scala del carattere su cui è misurata.
+Tuttavia la varianza \`{e} un indice di difficile interpretazione, in parte anche per via della sua unit\`{a} di misura, il quadrato di quella di partenza. Si usa come indice equivalente la deviazione standard, che \`{e} la sua radice quadrata, in quanto essa possiede la stessa scala del carattere su cui \`{e} misurata.
 
 Tuttavia a questo livello di analisi i soli numeri, se non accompagnati da un adeguato esame grafico, possono essere fuorvianti, specialmente per quanto riguarda gli indici di dispersione. A questo riguardo:
 
@@ -109,31 +115,31 @@ Tuttavia a questo livello di analisi i soli numeri, se non accompagnati da un ad
 
 oppure:
 grafici di normali... leptocurtiche, platocurtiche etc
-In letteratura esistono una quantità notevole di indici di dispersione, alcuni per determinate tipologie di variabili, alcuni per determinati scopi; ad esempio il range di variazione, il coefficiente di variazione, la varianza per graduatorie, etc.
+In letteratura esistono una quantit\`{a} notevole di indici di dispersione, alcuni per determinate tipologie di variabili, alcuni per determinati scopi; ad esempio il range di variazione, il coefficiente di variazione, la varianza per graduatorie, etc.
 
 Indici di sintesi di associazione e dipendenza
 
-Per misurare la variazione congiunta di due variabili si vedrà in questa sede l'approccio simmetrico.
-Indici simmetrici pongono allo stesso livello d'importanza le variabili esaminate, ovvero non si cerca di spiegare la variabilità di una rispetto all'altra.
+Per misurare la variazione congiunta di due variabili si vedr\`{a} in questa sede l'approccio simmetrico.
+Indici simmetrici pongono allo stesso livello d'importanza le variabili esaminate, ovvero non si cerca di spiegare la variabilit\`{a} di una rispetto all'altra.
 
-Per variabili qualitative sconnesse oppure ordinate l'indice più utilizzato è il chi quadro (sebbene spesso non sia il più adatto). Il chi quadro misura in generale la distanza della distribuzione congiunta da una situazione teorica di indipendenza, ovvero è nullo in caso di indipendenza e tanto più grande più si presenti associazione tra le variabili esaminate.
+Per variabili qualitative sconnesse oppure ordinate l'indice più utilizzato \`{e} il chi quadro (sebbene spesso non sia il più adatto). Il chi quadro misura in generale la distanza della distribuzione congiunta da una situazione teorica di indipendenza, ovvero \`{e} nullo in caso di indipendenza e tanto più grande più si presenti associazione tra le variabili esaminate.
 (formula)
-Sebbene sia l'indicie più utilizzato in questa situazione, esso presenta dei problemi quando si vogliono confrontare diverse distribuzioni doppie, in quanto non ha limitazioni di scala e dunque non è un indice "relativo". Esistono tuttavia manipolazioni del chi quadrato che lo trasformano in un indice più facilmente interpretabile, sebbene non siano fortemente utilizzate (vv Phi di Cramer).
+Sebbene sia l'indicie più utilizzato in questa situazione, esso presenta dei problemi quando si vogliono confrontare diverse distribuzioni doppie, in quanto non ha limitazioni di scala e dunque non \`{e} un indice "relativo". Esistono tuttavia manipolazioni del chi quadrato che lo trasformano in un indice più facilmente interpretabile, sebbene non siano fortemente utilizzate (vv Phi di Cramer).
 
 Per variabili quantitative (discrete o continue, ma non graduatorie) invece viene utilizzato l'indice di correlazione lineare di Bravais-Pearson, che misura il grado in cui le variabili in esame variano congiuntamente (covariano).
-La correlazione è un indice limitato nell'intervallo [-1,1] ed assume valore unitario nel caso in cui ci sia una dipendenza funzionale (assenza di errore, relazione funzionale deterministica) tra le variabili, ed è nulla nel caso in cui vi sia indipendenza in forma lineare. E' sempre fondamentale l'analisi grafica di questa grandezza, in quanto una correlazione nulla può anche nascondere una relazione funzionale non lineare (es. quadratica). In particolare, la correlazione tra una variabile e se stessa non è altro che la varianza di questa.
+La correlazione \`{e} un indice limitato nell'intervallo [-1,1] ed assume valore unitario nel caso in cui ci sia una dipendenza funzionale (assenza di errore, relazione funzionale deterministica) tra le variabili, ed \`{e} nulla nel caso in cui vi sia indipendenza in forma lineare. E' sempre fondamentale l'analisi grafica di questa grandezza, in quanto una correlazione nulla può anche nascondere una relazione funzionale non lineare (es. quadratica). In particolare, la correlazione tra una variabile e se stessa non \`{e} altro che la varianza di questa.
 (formula)
 
 	* Applicazione: regressione lineare semplice *
 
-A cosa servono tutti questi indici? E' una forma di inutile sadismo matematico, sono solo formulette per descrivere fenomeni oppure hanno un riscontro su tecniche di estrazione delle informazioni? La risposta è piuttosto ovvia, ed andremo a dimostrarlo con un piccolo, pratico esempio.
-Uno degli scopi principe della statistica è storicamente l'individuazione di legami di causalità e, soprattutto, il descrivere il "come" ed il "quanto" di queste relazioni.
+A cosa servono tutti questi indici? E' una forma di inutile sadismo matematico, sono solo formulette per descrivere fenomeni oppure hanno un riscontro su tecniche di estrazione delle informazioni? La risposta \`{e} piuttosto ovvia, ed andremo a dimostrarlo con un piccolo, pratico esempio.
+Uno degli scopi principe della statistica \`{e} storicamente l'individuazione di legami di causalit\`{a} e, soprattutto, il descrivere il "come" ed il "quanto" di queste relazioni.
 
-Per questo esempio verrà utilizzato il noto dataset "trees", presente di default nella libreria di R. Questa indagine è condotta per la necessità di prevedere il volume di alberi di ciliegio a partire da altezza e diametro, in modo tale da poter determinare i migliori candidati da abbattere.
+Per questo esempio verr\`{a} utilizzato il noto dataset "trees", presente di default nella libreria di R. Questa indagine \`{e} condotta per la necessit\`{a} di prevedere il volume di alberi di ciliegio a partire da altezza e diametro, in modo tale da poter determinare i migliori candidati da abbattere.
 
 Note sulla terminologia:
-* Regressione semplice: modello statistico che pone in relazione una variabile di interesse (variabile risposta o dipendente) ed una variabile ad essa legata in una relazione causale asimmetrica, detta variabile dipendente, esplicativa, predittiva o covariata. In realtà questo modello, che appare di facile intuizione e comprensione, poggia su diverse ipotesi complesse, che per ora non andremo ad analizzare.
-* Goodness of fit: bontà di adattamento, ovvero capacità del modello di adattarsi ai dati. In generale viene calcolata esaminando la distanza tra valori predetti (o teorici) dal modello e i dati osservati su cui esso è stato stimato. L'indice utilizzato nel caso della regressione è l'R quadro.
+* Regressione semplice: modello statistico che pone in relazione una variabile di interesse (variabile risposta o dipendente) ed una variabile ad essa legata in una relazione causale asimmetrica, detta variabile dipendente, esplicativa, predittiva o covariata. In realt\`{a} questo modello, che appare di facile intuizione e comprensione, poggia su diverse ipotesi complesse, che per ora non andremo ad analizzare.
+* Goodness of fit: bont\`{a} di adattamento, ovvero capacit\`{a} del modello di adattarsi ai dati. In generale viene calcolata esaminando la distanza tra valori predetti (o teorici) dal modello e i dati osservati su cui esso \`{e} stato stimato. L'indice utilizzato nel caso della regressione \`{e} l'R quadro.
 
 
 <code>
@@ -148,90 +154,90 @@ Note sulla terminologia:
 > plot(Girth)
 > plot(Height)
 > plot(Volume)
-# NOTA: l'andamento della distribuzione di Girth e Volume è molto simile
+# NOTA: l'andamento della distribuzione di Girth e Volume \`{e} molto simile
 
 # -> analisi della covarianza / correlazione
 > cov(data)
 > cor(data)
 # ed ovviamente analisi grafica
 > plot(Girth,Volume)
-# dunque, con una correlazione tanto alta, il diametro sarà un ottimo predittore del volume: nella regressione semplice infatti l'indice R^2 di goodness of fit è proprio il quadrato del coefficiente di correlazione tra il predittore e la risposta
+# dunque, con una correlazione tanto alta, il diametro sar\`{a} un ottimo predittore del volume: nella regressione semplice infatti l'indice R^2 di goodness of fit \`{e} proprio il quadrato del coefficiente di correlazione tra il predittore e la risposta
 # ma andiamo a calcolare il modello e ad analizzarlo (molto superficialmente)
 > model=lm(Volume ~ Girth)
 > summary(model)
-# cosa restituisce R di interessante? innanzitutto la formula del modello, da verificare (eventuali mistyping), dopodichè alcune statistiche sui residui del modello (memo: residuo=valore fittato - valore osservato), dopodichè arriva la parte interessante.
-# innanzitutto, l'intercetta è una semplice variabile matematica determinata per sottrazione, ovvero rappresenta quel valore che assume la risposta quando la predittiva è nulla; il coefficiente dell'esplicativa invece rappresenta (nel caso univariato) il coefficiente angolare della retta di regressione, ovvero la variazione determinata nella risposta da un incremento unitario della variabile esplicativa.
-# (due parole due sulla significatività dei parametri)
-# la capacità di adattamento del modello ai dati (e non il viceversa!) è descritta, come già detto, dall'R quadro. In questo caso esso è pari a 0.94, ad indicare che ben il 94\% della variabilità totale della risposta è spiegato dal modello, ovvero viene "lasciato" al caso solo il 6\% della variabilità della risposta.
+# cosa restituisce R di interessante? innanzitutto la formula del modello, da verificare (eventuali mistyping), dopodich\`{e} alcune statistiche sui residui del modello (memo: residuo=valore fittato - valore osservato), dopodich\`{e} arriva la parte interessante.
+# innanzitutto, l'intercetta \`{e} una semplice variabile matematica determinata per sottrazione, ovvero rappresenta quel valore che assume la risposta quando la predittiva \`{e} nulla; il coefficiente dell'esplicativa invece rappresenta (nel caso univariato) il coefficiente angolare della retta di regressione, ovvero la variazione determinata nella risposta da un incremento unitario della variabile esplicativa.
+# (due parole due sulla significativit\`{a} dei parametri)
+# la capacit\`{a} di adattamento del modello ai dati (e non il viceversa!) \`{e} descritta, come gi\`{a} detto, dall'R quadro. In questo caso esso \`{e} pari a 0.94, ad indicare che ben il 94\% della variabilit\`{a} totale della risposta \`{e} spiegato dal modello, ovvero viene "lasciato" al caso solo il 6\% della variabilit\`{a} della risposta.
 # (Questo sembra un risultato molto incoraggiante, ma nel caso di modelli previsivi si cerca di massimizzare la varianza spiegata, in modo da avere il minor margine di errore casuale possibile. Questo indice che sembra tanto alto viene letteralmente surclassato da un modello solo di poco più complicato, capace di portare l'R quadro a 0.98: >v=log(Volume); h=log(Height); gsq=2*log(Girth); summary(lm(v~gsq+h)) )
-# Ovviamente la rappresentazione del modello è molto intuibile, e infatti la forza della regressione lineare semplice poggia proprio sull'"occhio", ovvero è la formalizzazione di una procedura che, intuitivamente, si farebbe anche ignorando totalmente la statistica; da un punto di vista grafico infatti:
+# Ovviamente la rappresentazione del modello \`{e} molto intuibile, e infatti la forza della regressione lineare semplice poggia proprio sull'"occhio", ovvero \`{e} la formalizzazione di una procedura che, intuitivamente, si farebbe anche ignorando totalmente la statistica; da un punto di vista grafico infatti:
 > plot(Girth,Volume)
 # volendo interpolare questi dati, semplicemente si traccerebbe una retta, che rappresenta proprio il modello di regressione calcolato:
-> abline(model$coefficients,col='red')
+> abline(model\$coefficients,col='red')
 </code>
 
-Dov'è quindi l'utilità di questo strumento? L'utilità del modello regressivo è nella formalizzazione probabilistico-matematica, nella capacità di studiare una variabile di interesse in ambito previsivo, descrittivo e relazionale (causale), nell'aprire le porte alle possibilità dei test statistico-inferenziali, nel costituire un semplice ed intelleggibile punto di partenza per condurre indagini che coinvolgono metodi più complessi.
+Dov'\`{e} quindi l'utilit\`{a} di questo strumento? L'utilit\`{a} del modello regressivo \`{e} nella formalizzazione probabilistico-matematica, nella capacit\`{a} di studiare una variabile di interesse in ambito previsivo, descrittivo e relazionale (causale), nell'aprire le porte alle possibilit\`{a} dei test statistico-inferenziali, nel costituire un semplice ed intelleggibile punto di partenza per condurre indagini che coinvolgono metodi più complessi.
 E se invece (come si accennava prima), volessimo inserire anche la variabile "altezza" tra i predittori del volume? Cosa accadrebbe al modello di regressione semplice?
-Innanzitutto, la regressione passerebbe da semplice a multivariata (o multipla), tuttavia mantenendo la condizione di linearità, essendo questa posta sui parametri. Ed ovviamente, l'interpolazione ai dati non sarebbe più rappresentabile da una retta ma, giacendo su R2, da un piano.
-Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzitutto analizzando i legami tra le variabili. (E' importante notare che le variabili esplicative devono possedere una correlazione non elevata, altrimenti ci si troverebbe in una situazione di collinearità che invaliderebbe in toto il modello, portando a conclusioni del tutto prive di senso.)
+Innanzitutto, la regressione passerebbe da semplice a multivariata (o multipla), tuttavia mantenendo la condizione di linearit\`{a}, essendo questa posta sui parametri. Ed ovviamente, l'interpolazione ai dati non sarebbe più rappresentabile da una retta ma, giacendo su R2, da un piano.
+Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzitutto analizzando i legami tra le variabili. (E' importante notare che le variabili esplicative devono possedere una correlazione non elevata, altrimenti ci si troverebbe in una situazione di collinearit\`{a} che invaliderebbe in toto il modello, portando a conclusioni del tutto prive di senso.)
 
 <code>
 > model.2=lm(Volume ~ Girth + Height)
 > summary(model.2)
-# L'R quadro come prevedibile è aumentato, avendo inserito nel modello delle informazioni non incluse nella variabile "altezza".
+# L'R quadro come prevedibile \`{e} aumentato, avendo inserito nel modello delle informazioni non incluse nella variabile "altezza".
 > hh=seq(min(Height),max(Height),length.out=50)
 > gg=seq(min(Girth),max(Girth),length.out=50)
 > griglia=expand.grid(gg,hh)
-> fit.them=function(data,model) {as.matrix(cbind(1,data))%*%as.matrix(model$coefficients)}
+> fit.them=function(data,model) {as.matrix(cbind(1,data))\%*\%as.matrix(model\$coefficients)}
 > fitted=matrix(fit.them(griglia,model.2),byrow=F,nrow=50)
 > persp(gg,hh,fitted,theta=-55,col='lightblue')
 </code>
 
-		* Probabilità *
+		\emph{Probabilit\`{a}}
 
-La probabilità è strettamente legato alla statistica, un quanto permette di studiare la casualità, e quindi di poter analizzare nel complesso le componenti sistematiche ed aleatorie di un certo fenomeno. In questo ambito, più che dilungarsi in ambito tecnico, si vedranno le definizioni fondamentali della probabilità: definizione del concetto di probabilità, assiomi di Kolmogorov, qualche teorema interessante come quello di Bayes, le distribuzioni di probabilità più note e le caratteristiche delle variabili aleatorie.
-Il concetto stesso di probabilità è molto complesso, e diversi approcci hanno portato a diverse definizioni, che sono tuttavia compatibili ed in un certo senso complementari tra loro. E' interessante notare che la disciplina stessa è nata dalla necessità di fare affermazioni in ambito ludico: i primissimi studi in questo campo sono infatti di Girolamo Cardano, esposti nel "Liber de ludo aleae" del 1526, mentre la formalizzazione assiomatica moderna è stata perfezionata solo nel 1933 da Kolmogorov.
+La probabilit\`{a} \`{e} strettamente legato alla statistica, un quanto permette di studiare la casualit\`{a}, e quindi di poter analizzare nel complesso le componenti sistematiche ed aleatorie di un certo fenomeno. In questo ambito, più che dilungarsi in ambito tecnico, si vedranno le definizioni fondamentali della probabilit\`{a}: definizione del concetto di probabilit\`{a}, assiomi di Kolmogorov, qualche teorema interessante come quello di Bayes, le distribuzioni di probabilit\`{a} più note e le caratteristiche delle variabili aleatorie.
+Il concetto stesso di probabilit\`{a} \`{e} molto complesso, e diversi approcci hanno portato a diverse definizioni, che sono tuttavia compatibili ed in un certo senso complementari tra loro. E' interessante notare che la disciplina stessa \`{e} nata dalla necessit\`{a} di fare affermazioni in ambito ludico: i primissimi studi in questo campo sono infatti di Girolamo Cardano, esposti nel "Liber de ludo aleae" del 1526, mentre la formalizzazione assiomatica moderna \`{e} stata perfezionata solo nel 1933 da Kolmogorov.
 
 1. La definizione classica:
-La probabilità di un evento è il rapporto tra il numero di casi favorevoli all'evento ed il numero dei casi possibili, purchè essi siano tutti equiprobabili.
+La probabilit\`{a} di un evento \`{e} il rapporto tra il numero di casi favorevoli all'evento ed il numero dei casi possibili, purch\`{e} essi siano tutti equiprobabili.
 
 <code>
  *	P(A)=n_A/n
 
-Questa è la prima definizione dal punto di vista cronologico, ed è quella più facilmente intuibile. E' chiarissima la sua relazione con il gioco dei dadi!
-I limiti di questo approccio sono tuttavia lampanti: il fenomeno deve essere completamente noto, i casi possibili devono essere in numero finito, e soprattutto questi devono essere equiprobabili. Inoltre, il concetto di probabilità viene utilizzato all'interno della stessa definizione!
+Questa \`{e} la prima definizione dal punto di vista cronologico, ed \`{e} quella più facilmente intuibile. E' chiarissima la sua relazione con il gioco dei dadi!
+I limiti di questo approccio sono tuttavia lampanti: il fenomeno deve essere completamente noto, i casi possibili devono essere in numero finito, e soprattutto questi devono essere equiprobabili. Inoltre, il concetto di probabilit\`{a} viene utilizzato all'interno della stessa definizione!
 Ma facciamo un esempio, considerando il lancio di un dado.
-Supponendo di lanciare un dado bilanciato a sei facce, quale sarà la probabilità di ottenere un numero pari?
-I casi possibili sono: {1, 2, 3, 4, 5, 6}, tutti equiprobabili perchè il dado è bilanciato.
-Si ottiene quindi che i casi favorevoli all'evento {otterrò un numero pari} sono {2,4,6}, ovvero 3/6 = 0.5, ovvero si ha una probabilità pari a 0.5 di ottenere un numero pari dal lancio di un dado bilanciato.
-Si nota che, sebbene sia di uso comune, è opportuno riferirsi alle probabilità con frazioni piuttosto che con percentuali, in quanto il loro uso può essere spesso fuorviante e dare adito ad interpretazioni non adeguate.
+Supponendo di lanciare un dado bilanciato a sei facce, quale sar\`{a} la probabilit\`{a} di ottenere un numero pari?
+I casi possibili sono: {1, 2, 3, 4, 5, 6}, tutti equiprobabili perch\`{e} il dado \`{e} bilanciato.
+Si ottiene quindi che i casi favorevoli all'evento {otterrò un numero pari} sono {2,4,6}, ovvero 3/6 = 0.5, ovvero si ha una probabilit\`{a} pari a 0.5 di ottenere un numero pari dal lancio di un dado bilanciato.
+Si nota che, sebbene sia di uso comune, \`{e} opportuno riferirsi alle probabilit\`{a} con frazioni piuttosto che con percentuali, in quanto il loro uso può essere spesso fuorviante e dare adito ad interpretazioni non adeguate.
 
 Da questa definizione segue che:
-1.1. la probabilità di un evento è un numero compreso tra 0 ed 1
-1.2. la probabilità dell'evento certo è pari ad 1
-1.3. la probabilità di due eventi incompatibili (ovvero che non possono verificarsi contemporaneamente) è pari alla somma delle due rispettive probabilità
+1.1. la probabilit\`{a} di un evento \`{e} un numero compreso tra 0 ed 1
+1.2. la probabilit\`{a} dell'evento certo \`{e} pari ad 1
+1.3. la probabilit\`{a} di due eventi incompatibili (ovvero che non possono verificarsi contemporaneamente) \`{e} pari alla somma delle due rispettive probabilit\`{a}
 
-Facciamo dunque un altro esempio, sempre considerando il lancio di un dado: qual è la probabilità di ottenere un risultato diverso da 6?
-primo approccio - i casi favorevoli all'evento sono: {1, 2, 3, 4, 5} da cui si ricava che 5/6 è la probabilità di questo evento
-secondo approccio - poichè la probabilità dell'evento certo è 1, e gli eventi {ottenere un risultato diverso da 6} ed {ottenere 6} sono due eventi incompatibili e necessari, la loro unione sarà proprio l'evento certo: infatti tirando un dado, otterrò 6 oppure un risultato diverso da 6. Quindi, poichè P{ottenere 6}=1/6, e poichè P{ottenere 6} + P{ottenere un numero diverso da 6} = P{evento certo} = 1, segue che P{ottenere un numero diverso da 6} = P{evento certo} - P{ottenere 6} = 1 - 1/6 = 5/6
-Benchè questo secondo approccio sembri molto macchinoso applicato ad un caso così semplice, è spesso l'unico possibile in molte situazioni, e aiuta a capire quale sia la logica utilizzata molto spesso nei calcoli probabilistici.
+Facciamo dunque un altro esempio, sempre considerando il lancio di un dado: qual \`{e} la probabilit\`{a} di ottenere un risultato diverso da 6?
+primo approccio - i casi favorevoli all'evento sono: {1, 2, 3, 4, 5} da cui si ricava che 5/6 \`{e} la probabilit\`{a} di questo evento
+secondo approccio - poich\`{e} la probabilit\`{a} dell'evento certo \`{e} 1, e gli eventi {ottenere un risultato diverso da 6} ed {ottenere 6} sono due eventi incompatibili e necessari, la loro unione sar\`{a} proprio l'evento certo: infatti tirando un dado, otterrò 6 oppure un risultato diverso da 6. Quindi, poich\`{e} P{ottenere 6}=1/6, e poich\`{e} P{ottenere 6} + P{ottenere un numero diverso da 6} = P{evento certo} = 1, segue che P{ottenere un numero diverso da 6} = P{evento certo} - P{ottenere 6} = 1 - 1/6 = 5/6
+Bench\`{e} questo secondo approccio sembri molto macchinoso applicato ad un caso così semplice, \`{e} spesso l'unico possibile in molte situazioni, e aiuta a capire quale sia la logica utilizzata molto spesso nei calcoli probabilistici.
 
 2. La definizione frequentista:
-Ipotizzando di poter ripetere lo stesso esperimento infinite volte nelle stesse condizioni, la probabilità di un evento è il limite a cui tende la frequenza relativa dei casi favorevoli all'evento al crescere del numero degli esperimenti, ovvero
+Ipotizzando di poter ripetere lo stesso esperimento infinite volte nelle stesse condizioni, la probabilit\`{a} di un evento \`{e} il limite a cui tende la frequenza relativa dei casi favorevoli all'evento al crescere del numero degli esperimenti, ovvero
 
 <code>
  *	P(A)= lim{n to Inf} n_A/n
 </code>
 
-Questa definizione, di facile intuizione come quella classica, supera diversi limiti: innanzitutto la definizione non è più circolare, gli eventi non devono essere in numero finito ed inoltre non devono essere tutti necessariamente equiprobabili.
+Questa definizione, di facile intuizione come quella classica, supera diversi limiti: innanzitutto la definizione non \`{e} più circolare, gli eventi non devono essere in numero finito ed inoltre non devono essere tutti necessariamente equiprobabili.
 E' importante notare però che non sempre si hanno esperimenti che si possono - teoricamente - ripetere all'infinito.
-Anche da questa definizione seguono le tre proprietà della probabilità descritte precedentemente.
+Anche da questa definizione seguono le tre propriet\`{a} della probabilit\`{a} descritte precedentemente.
 
 3. La definizione soggettiva:
-La probabilità di un evento è il prezzo che un individuo ritiene equo pagare per ricevere 1 se l'evento si realizza e 0 se esso non si realizzi; le probabilità degli eventi devono essere distribuite in maniera tale che non sia possibile ottenere una vincita certa od una perdita certa (condizione di coerenza).
+La probabilit\`{a} di un evento \`{e} il prezzo che un individuo ritiene equo pagare per ricevere 1 se l'evento si realizza e 0 se esso non si realizzi; le probabilit\`{a} degli eventi devono essere distribuite in maniera tale che non sia possibile ottenere una vincita certa od una perdita certa (condizione di coerenza).
 
-Anche da questa definizione derivano le tre proprietà fondamentali della probabilità:
-3.1 la probabilità di un evento deve essere un numero compreso tra 0 ed 1, altrimenti si avrebbe vincita certa o perdita certa
+Anche da questa definizione derivano le tre propriet\`{a} fondamentali della probabilit\`{a}:
+3.1 la probabilit\`{a} di un evento deve essere un numero compreso tra 0 ed 1, altrimenti si avrebbe vincita certa o perdita certa
 3.2 
 
 
