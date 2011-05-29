@@ -1,5 +1,5 @@
 \documentclass{book}
-
+\usepackage{listings}
 \title{Appunti corso statistica ed R, prima parte}
 \author{Andrea Berardi - and.be.like@gmail.com}
 \begin{document}
@@ -72,7 +72,8 @@ Da questi valori si disegna uno dei grafici fondamentali della descrittiva, il b
 	-R-
 esempio di un boxplot:
 
-\verbatiminput{snippets/boxplot.R}
+\lstset{language=R}
+\lstinputlisting{snippets/boxplot.R}
 
 Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori medi, mediani o modali, ovvero dov'\`{e} il centro delle distribuzioni che si osservano. Ma [ESEMPI NECESSARI: anscombe!] questi valori danno solo un'idea di posizione, e non di forma. Infatti a parit\`{a} di questi indici possono corrispondere forme di distribuzioni molto diverse!
 
