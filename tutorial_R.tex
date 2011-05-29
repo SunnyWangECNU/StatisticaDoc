@@ -29,8 +29,8 @@ TO DO:
 
 
 
-\huge{Statistica descrittiva}
-\normalsize \\ \\
+\section{Statistica descrittiva}
+
 La statistica descrittiva nasce dal bisogno e dalla necessit\`{a} di uno studio sistematico dei fenomeni reali, per una loro quantificazione numerica, dalla volont\`{a} di prevedere, sia all'indietro che in avanti, il comportamento di determinati caratteri, e per capire, quando si hanno insufficienti conoscenze, come agiscono e reagiscono dati elementi in situazioni stabilite.
 La base della descrittiva \`{e}, ovviamente, l'osservazione: si suppone cio\`{e} che l'unit\`{a} oggetto di studio (cio\`{e} l'"unit\`{a} statistica") esprima un certo "carattere" con una propria "modalit\`{a}", e che essa sia \emph{osservabile}.
 Ad esempio, un individuo può presentare la modalit\`{a} "azzurro" per il carattere "colore degli occhi". Si nota che per quanto riguarda le unit\`{a} statistiche e i vari caratteri osservati si possono trovare gli elementi più disparati.
@@ -51,7 +51,7 @@ Innanzitutto, \`{e} necessario fornire un semplice glossario di base:
 
 Prendiamo inizialmente in esame solo gli indici di sintesi per ogni variabile separatamente, ovvero che analizzino distribuzioni semplici.
 
-* Indici di locazione *
+\subsection{Indici di locazione}
 
 L'indice intuitivamente più semplice \`{e} certamente la moda, che si utilizza con qualsiasi tipo di carattere (volendo anche con quantitativi continui, ma perde facilmente di significato).
 La moda \`{e} semplicemente la modalit\`{a} del carattere che si presenta più frequentemente nella distribuzione studiata, ovvero \`{e} la modalit\`{a} corrispondente alla maggiore frequenza assoluta nel collettivo.
@@ -83,7 +83,7 @@ esempio anscombe:
 
 **NOTA: per ripristinare il parametro mfrow come al default (1 plot per window), > par(mfrow=c(1,1));
 
-Indici di forma
+\subsection{Indici di forma}
 
 L'indice fondamentale di descrizione del comportamento di una distribuzione rispetto alla media \`{e} la varianza.
 La varianza indica il grado di dispersione intorno alla media della distribuzione in esame: se tutti i punti sono coincidenti questa vale 0, altrimenti una quantit\`{a} positiva.
@@ -103,7 +103,7 @@ oppure:
 grafici di normali... leptocurtiche, platocurtiche etc
 In letteratura esistono una quantit\`{a} notevole di indici di dispersione, alcuni per determinate tipologie di variabili, alcuni per determinati scopi; ad esempio il range di variazione, il coefficiente di variazione, la varianza per graduatorie, etc.
 
-Indici di sintesi di associazione e dipendenza
+\subsection{Indici di sintesi di associazione e dipendenza}
 
 Per misurare la variazione congiunta di due variabili si vedr\`{a} in questa sede l'approccio simmetrico.
 Indici simmetrici pongono allo stesso livello d'importanza le variabili esaminate, ovvero non si cerca di spiegare la variabilit\`{a} di una rispetto all'altra.
@@ -116,14 +116,15 @@ Per variabili quantitative (discrete o continue, ma non graduatorie) invece vien
 La correlazione \`{e} un indice limitato nell'intervallo [-1,1] ed assume valore unitario nel caso in cui ci sia una dipendenza funzionale (assenza di errore, relazione funzionale deterministica) tra le variabili, ed \`{e} nulla nel caso in cui vi sia indipendenza in forma lineare. E' sempre fondamentale l'analisi grafica di questa grandezza, in quanto una correlazione nulla può anche nascondere una relazione funzionale non lineare (es. quadratica). In particolare, la correlazione tra una variabile e se stessa non \`{e} altro che la varianza di questa.
 (formula)
 
-	* Applicazione: regressione lineare semplice *
+
+\section{Applicazione: regressione lineare semplice}
 
 A cosa servono tutti questi indici? E' una forma di inutile sadismo matematico, sono solo formulette per descrivere fenomeni oppure hanno un riscontro su tecniche di estrazione delle informazioni? La risposta \`{e} piuttosto ovvia, ed andremo a dimostrarlo con un piccolo, pratico esempio.
 Uno degli scopi principe della statistica \`{e} storicamente l'individuazione di legami di causalit\`{a} e, soprattutto, il descrivere il "come" ed il "quanto" di queste relazioni.
 
 Per questo esempio verr\`{a} utilizzato il noto dataset "trees", presente di default nella libreria di R. Questa indagine \`{e} condotta per la necessit\`{a} di prevedere il volume di alberi di ciliegio a partire da altezza e diametro, in modo tale da poter determinare i migliori candidati da abbattere.
 
-Note sulla terminologia:
+\subsection{Nte sulla terminologia}
 * Regressione semplice: modello statistico che pone in relazione una variabile di interesse (variabile risposta o dipendente) ed una variabile ad essa legata in una relazione causale asimmetrica, detta variabile dipendente, esplicativa, predittiva o covariata. In realt\`{a} questo modello, che appare di facile intuizione e comprensione, poggia su diverse ipotesi complesse, che per ora non andremo ad analizzare.
 * Goodness of fit: bont\`{a} di adattamento, ovvero capacit\`{a} del modello di adattarsi ai dati. In generale viene calcolata esaminando la distanza tra valori predetti (o teorici) dal modello e i dati osservati su cui esso \`{e} stato stimato. L'indice utilizzato nel caso della regressione \`{e} l'R quadro.
 
@@ -137,12 +138,12 @@ Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzit
 
 \lstinputlisting{snippets/ex2.R}
 
-		\emph{Probabilit\`{a}}
+\section{Probabilit\`{a}}
 
 La probabilit\`{a} \`{e} strettamente legato alla statistica, un quanto permette di studiare la casualit\`{a}, e quindi di poter analizzare nel complesso le componenti sistematiche ed aleatorie di un certo fenomeno. In questo ambito, più che dilungarsi in ambito tecnico, si vedranno le definizioni fondamentali della probabilit\`{a}: definizione del concetto di probabilit\`{a}, assiomi di Kolmogorov, qualche teorema interessante come quello di Bayes, le distribuzioni di probabilit\`{a} più note e le caratteristiche delle variabili aleatorie.
 Il concetto stesso di probabilit\`{a} \`{e} molto complesso, e diversi approcci hanno portato a diverse definizioni, che sono tuttavia compatibili ed in un certo senso complementari tra loro. E' interessante notare che la disciplina stessa \`{e} nata dalla necessit\`{a} di fare affermazioni in ambito ludico: i primissimi studi in questo campo sono infatti di Girolamo Cardano, esposti nel "Liber de ludo aleae" del 1526, mentre la formalizzazione assiomatica moderna \`{e} stata perfezionata solo nel 1933 da Kolmogorov.
 
-1. La definizione classica:
+\subsection{La definizione classica}
 La probabilit\`{a} di un evento \`{e} il rapporto tra il numero di casi favorevoli all'evento ed il numero dei casi possibili, purch\`{e} essi siano tutti equiprobabili.
 
 \begin{verbatim}
@@ -167,7 +168,7 @@ primo approccio - i casi favorevoli all'evento sono: {1, 2, 3, 4, 5} da cui si r
 secondo approccio - poich\`{e} la probabilit\`{a} dell'evento certo \`{e} 1, e gli eventi {ottenere un risultato diverso da 6} ed {ottenere 6} sono due eventi incompatibili e necessari, la loro unione sar\`{a} proprio l'evento certo: infatti tirando un dado, otterrò 6 oppure un risultato diverso da 6. Quindi, poich\`{e} P{ottenere 6}=1/6, e poich\`{e} P{ottenere 6} + P{ottenere un numero diverso da 6} = P{evento certo} = 1, segue che P{ottenere un numero diverso da 6} = P{evento certo} - P{ottenere 6} = 1 - 1/6 = 5/6
 Bench\`{e} questo secondo approccio sembri molto macchinoso applicato ad un caso così semplice, \`{e} spesso l'unico possibile in molte situazioni, e aiuta a capire quale sia la logica utilizzata molto spesso nei calcoli probabilistici.
 
-2. La definizione frequentista:
+\subsection{La definizione frequentista}
 Ipotizzando di poter ripetere lo stesso esperimento infinite volte nelle stesse condizioni, la probabilit\`{a} di un evento \`{e} il limite a cui tende la frequenza relativa dei casi favorevoli all'evento al crescere del numero degli esperimenti, ovvero
 
 \begin{verbatim}
@@ -178,7 +179,7 @@ Questa definizione, di facile intuizione come quella classica, supera diversi li
 E' importante notare però che non sempre si hanno esperimenti che si possono - teoricamente - ripetere all'infinito.
 Anche da questa definizione seguono le tre propriet\`{a} della probabilit\`{a} descritte precedentemente.
 
-3. La definizione soggettiva:
+\subsection{La definizione soggettiva}
 La probabilit\`{a} di un evento \`{e} il prezzo che un individuo ritiene equo pagare per ricevere 1 se l'evento si realizza e 0 se esso non si realizzi; le probabilit\`{a} degli eventi devono essere distribuite in maniera tale che non sia possibile ottenere una vincita certa od una perdita certa (condizione di coerenza).
 
 Anche da questa definizione derivano le tre propriet\`{a} fondamentali della probabilit\`{a}:
