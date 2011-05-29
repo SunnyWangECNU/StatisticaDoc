@@ -1,7 +1,5 @@
 \documentclass{book}
 
-\usepackage{Tabbing}
-
 \title{Appunti corso statistica ed R, prima parte}
 \author{Andrea Berardi - and.be.like@gmail.com}
 \begin{document}
@@ -13,17 +11,21 @@
 
 \maketitle
 
-\begin{Tabbing}
-TO DO: \TAB=								\\
-\TAB> * Generale \TAB= 							\\
-\TAB> \TAB> * Revisione completa 					\\
-\TAB> \TAB> * Strutturare in modo intelligente, organizzato ed organico \\
-\TAB> * Argomenti 							\\
-\TAB> \TAB> * Probabilit\`{a}: definizioni, variabili aleatorie		\\
-\TAB> \TAB> * Distribuzioni fondamentali, discrete ed ac		\\
-\TAB> \TAB> * Inferenza statistica e teoria dei test 			\\
+TO DO:
+\begin{list}{*}{}
+\item Generale
+\begin{list}{-}{}
+\item Revisione completa
+\item Strutturare in modo intelligente, organizzato ed organico
+\end{list}
+\item Argomenti
+\begin{list}{-}{}
+\item Probabilit\`{a}: definizioni, variabili aleatorie
+\item Distribuzioni fondamentali, discrete ed ac
+\item Inferenza statistica e teoria dei test
+\end{list}
+\end{list}
 
-\end{Tabbing}
 
 
 
@@ -37,13 +39,15 @@ Gli indici di sintesi in letteratura sono veramente numerosi, ma in questa sede 
 Gli indici descrittivi ovviamente dipendono dal tipo di carattere in esame: la media aritmetica del colore dei capelli ad esempio non avrebbe alcun senso.
 
 Innanzitutto, \`{e} necessario fornire un semplice glossario di base:
-*collettivo: unit\`{a} statistiche su cui \`{e} stata effettuata la rilevazione o l'analisi dati. La sua numerosit\`{a} si riferisce al numero di unit\`{a} statistiche (oggetti dell'indagine, ricerca, ..) che comprende;
-*popolazione: insieme di riferimento da cui \`{e} estratto il campione statistico; la sua numerosit\`{a} si indica in genere con N;
-*campione: sottoinsieme della popolazione su cui vengono effettuate delle rilevazioni. Ciò \`{e} necessario in quanto l'indagine censuaria assume proporzioni e costi enormi, ed esistono strumenti statistico-probabilistici per estendere ipotesi testate sul campione all'intera popolazione di riferimento. La numerosit\`{a} campionaria in genere indicata con n;
-*frequenza (assoluta): numero di volte con cui si presenta un certo fenomeno, ci si riferisce ad essa con f oppure n;
-*frequenza relativa: \`{e} pari alla frequenza assoluta sul totale di casi, ovvero n/N oppure f/F. Per la legge debole dei grandi numeri tende, sotto larghe ipotesi, alla probabilit\`{a} dell'evento. Dalla frequenza realtiva derivano poi le percentuali, con una semplice moltiplicazione per 100;
-*carattere qualitativo: \`{e} un carattere non numerico, che può essere ordinato (es. insufficiente, sufficiente, buono) oppure sconnesso (es. blu, rosso, verde).
-*carattere quantitativo: \`{e} un carattere espresso numericamente, e può essere di tipo discreto o continuo. E' continuo se il suo campo di variazione \`{e} l'insieme dei numeri reali o comunque un insieme numerico denso, ed \`{e} discreto altrimenti. Alcuni carattere possono essere espressi sia in modo qualitativo che quantitativo, come ad esempio il peso.
+\begin{list}{*}{}
+\item collettivo: unit\`{a} statistiche su cui \`{e} stata effettuata la rilevazione o l'analisi dati. La sua numerosit\`{a} si riferisce al numero di unit\`{a} statistiche (oggetti dell'indagine, ricerca, ..) che comprende;
+\item popolazione: insieme di riferimento da cui \`{e} estratto il campione statistico; la sua numerosit\`{a} si indica in genere con N;
+\item campione: sottoinsieme della popolazione su cui vengono effettuate delle rilevazioni. Ciò \`{e} necessario in quanto l'indagine censuaria assume proporzioni e costi enormi, ed esistono strumenti statistico-probabilistici per estendere ipotesi testate sul campione all'intera popolazione di riferimento. La numerosit\`{a} campionaria in genere indicata con n;
+\item frequenza (assoluta): numero di volte con cui si presenta un certo fenomeno, ci si riferisce ad essa con f oppure n;
+\item frequenza relativa: \`{e} pari alla frequenza assoluta sul totale di casi, ovvero n/N oppure f/F. Per la legge debole dei grandi numeri tende, sotto larghe ipotesi, alla probabilit\`{a} dell'evento. Dalla frequenza realtiva derivano poi le percentuali, con una semplice moltiplicazione per 100;
+\item carattere qualitativo: \`{e} un carattere non numerico, che può essere ordinato (es. insufficiente, sufficiente, buono) oppure sconnesso (es. blu, rosso, verde).
+\item carattere quantitativo: \`{e} un carattere espresso numericamente, e può essere di tipo discreto o continuo. E' continuo se il suo campo di variazione \`{e} l'insieme dei numeri reali o comunque un insieme numerico denso, ed \`{e} discreto altrimenti. Alcuni carattere possono essere espressi sia in modo qualitativo che quantitativo, come ad esempio il peso.
+\end{list}
 
 Prendiamo inizialmente in esame solo gli indici di sintesi per ogni variabile separatamente, ovvero che analizzino distribuzioni semplici.
 
@@ -68,10 +72,7 @@ Da questi valori si disegna uno dei grafici fondamentali della descrittiva, il b
 	-R-
 esempio di un boxplot:
 
-\begin{verbatim}
-> library(datasets); attach(anscombe)
-> boxplot(y1)
-\end{verbatim}
+\input{boxplot.R}
 
 Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori medi, mediani o modali, ovvero dov'\`{e} il centro delle distribuzioni che si osservano. Ma [ESEMPI NECESSARI: anscombe!] questi valori danno solo un'idea di posizione, e non di forma. Infatti a parit\`{a} di questi indici possono corrispondere forme di distribuzioni molto diverse!
 
