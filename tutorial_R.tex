@@ -1,6 +1,17 @@
 \documentclass{article}
-\usepackage{listings}
 \usepackage{color}
+\usepackage{listings}
+\lstset{ %
+language=R,
+numbers=left,
+basicstyle=\footnotesize,
+numberstyle=\footnotesize,
+backgroundcolor=\color{yellow},
+postbreak=\space,
+breakindent=5pt,
+breaklines,
+frame=single
+}
 \usepackage{amsmath}
 \title{Appunti corso statistica ed R, prima parte}
 \author{Andrea Berardi - and.be.like@gmail.com}
@@ -73,12 +84,11 @@ Un altro indice particolarmente importante e robusto, per caratteri qualitativi 
 In realt\`{a} la mediana \`{e} un caso particolare di un altro indice, ovvero il percentile, che, come intuibile dal nome, divide la distribuzione in parti percentuali, ed un altra sintesi basata su di esso \`{e} il quartile, che divide la distribuzione in quarti: il primo quartile lascia alla propria sinistra il 25\% della popolazione, il terzo ne lascia il 25\% alla propria destra; il secondo quartile \`{e} proprio la mediana.
 Da questi valori si disegna uno dei grafici fondamentali della descrittiva, il boxplot.
 
-\lstset{language=R}
 \lstinputlisting[caption=Esempio di un boxplot,label=lst:boxplot]{snippets/boxplot.R}
 
 Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori medi, mediani o modali, ovvero dov'\`{e} il centro delle distribuzioni che si osservano. Ma [ESEMPI NECESSARI: anscombe!] questi valori danno solo un'idea di posizione, e non di forma. Infatti a parit\`{a} di questi indici possono corrispondere forme di distribuzioni molto diverse!
 
-\lstinputlistingg[caption=Esempio anscombe,label=lst:anscombe]{snippets/anscombe.R}
+\lstinputlisting[caption=Esempio anscombe,label=lst:anscombe]{snippets/anscombe.R}
 
 **NOTA: per ripristinare il parametro mfrow come al default (1 plot per window), > par(mfrow=c(1,1));
 
@@ -96,7 +106,7 @@ Tuttavia la varianza \`{e} un indice di difficile interpretazione, in parte anch
 Tuttavia a questo livello di analisi i soli numeri, se non accompagnati da un adeguato esame grafico, possono essere fuorvianti, specialmente per quanto riguarda gli indici di dispersione. A questo riguardo:
 
 
-\lstinputlistingg[caption=Esempio di dispersione,label=lst:dispersione]{snippets/dispersione.R}
+\lstinputlisting[caption=Esempio di dispersione,label=lst:dispersione]{snippets/dispersione.R}
 
 oppure:
 grafici di normali... leptocurtiche, platocurtiche etc
@@ -128,7 +138,7 @@ Per questo esempio verr\`{a} utilizzato il noto dataset "trees", presente di def
 * Goodness of fit: bont\`{a} di adattamento, ovvero capacit\`{a} del modello di adattarsi ai dati. In generale viene calcolata esaminando la distanza tra valori predetti (o teorici) dal modello e i dati osservati su cui esso \`{e} stato stimato. L'indice utilizzato nel caso della regressione \`{e} l'R quadro.
 
 
-\lstinputlistingg[caption=Esempio]{snippets/ex1.R}
+\lstinputlisting[caption=Esempio]{snippets/ex1.R}
 
 Dov'\`{e} quindi l'utilit\`{a} di questo strumento? L'utilit\`{a} del modello regressivo \`{e} nella formalizzazione probabilistico-matematica, nella capacit\`{a} di studiare una variabile di interesse in ambito previsivo, descrittivo e relazionale (causale), nell'aprire le porte alle possibilit\`{a} dei test statistico-inferenziali, nel costituire un semplice ed intelleggibile punto di partenza per condurre indagini che coinvolgono metodi più complessi.
 E se invece (come si accennava prima), volessimo inserire anche la variabile "altezza" tra i predittori del volume? Cosa accadrebbe al modello di regressione semplice?
