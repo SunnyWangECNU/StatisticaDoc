@@ -60,7 +60,7 @@ Una moda può essere "Q", "cercopiteco" o "42". Se nella distribuzione di riferi
 Uno degli indici più utilizzato e noto \`{e} la media aritmetica semplice:
 
 \begin{verbatim}
- *	mu_x=sum{i from 1 to n} x_n over n
+ $\\mu_x=sum_{i=1}^n frac{x_i}{n}
 \end{verbatim}
 
 La media \`{e} un semplicissimo indice lineare per qualsiasi carattere non qualitativo sconnesso, che sintetizza in un numero (non puro) il valore centrale della distribuzione del carattere sulle unit\`{a} osservate. Ovviamente esistono molti altri tipi di medie (geometriche, quadratiche, pesate, etc).
@@ -80,18 +80,7 @@ Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori m
 	-R-
 esempio anscombe:
 
-\begin{verbatim}
-
-> library(datasets); attach(anscombe)
-#cos'hanno in comune questi plot??
-> par(mfrow=c(2,2)); plot(y1); plot(y2); plot(y3); plot(y4)
-#calcolandone le medie...
-> apply(cbind(y1,y2,y3,y4),2,mean)
-#risultano essere pressoch\`{e} uguali (alla seconda cifra decimale)
-> plot(sort(y1)); plot(sort(y2)); plot(sort(y3)); plot(sort(y4))
-#sebbene le forme distribuzionali siano ben diverse
-
-\end{verbatim}
+\lstinputlisting{snippets/anscombe.R}
 
 **NOTA: per ripristinare il parametro mfrow come al default (1 plot per window), > par(mfrow=c(1,1));
 
@@ -109,11 +98,7 @@ Tuttavia la varianza \`{e} un indice di difficile interpretazione, in parte anch
 Tuttavia a questo livello di analisi i soli numeri, se non accompagnati da un adeguato esame grafico, possono essere fuorvianti, specialmente per quanto riguarda gli indici di dispersione. A questo riguardo:
 
 	-R-
-\begin{verbatim}
-> library(datasets); attach(anscombe)
-> apply(cbind(y1,y2,y3,y4),2,sd)
-#le dev standard sono praticamente uguali...
-\end{verbatim}
+\lstinputlisting{snippets/dispersione.R}
 
 oppure:
 grafici di normali... leptocurtiche, platocurtiche etc
@@ -144,39 +129,7 @@ Note sulla terminologia:
 * Goodness of fit: bont\`{a} di adattamento, ovvero capacit\`{a} del modello di adattarsi ai dati. In generale viene calcolata esaminando la distanza tra valori predetti (o teorici) dal modello e i dati osservati su cui esso \`{e} stato stimato. L'indice utilizzato nel caso della regressione \`{e} l'R quadro.
 
 
-\begin{verbatim}
-> library(datasets)
-> data=trees
-> attach(data)
-#  analisi dei dati "ad occhio"
-> data
-# analisi indici descrittivi: campi di variazione, medie, etc
-> summary(data)
-# analisi grafica delle distribuzioni
-> plot(Girth)
-> plot(Height)
-> plot(Volume)
-# NOTA: l'andamento della distribuzione di Girth e Volume \`{e} molto simile
-
-# -> analisi della covarianza / correlazione
-> cov(data)
-> cor(data)
-# ed ovviamente analisi grafica
-> plot(Girth,Volume)
-# dunque, con una correlazione tanto alta, il diametro sar\`{a} un ottimo predittore del volume: nella regressione semplice infatti l'indice R^2 di goodness of fit \`{e} proprio il quadrato del coefficiente di correlazione tra il predittore e la risposta
-# ma andiamo a calcolare il modello e ad analizzarlo (molto superficialmente)
-> model=lm(Volume ~ Girth)
-> summary(model)
-# cosa restituisce R di interessante? innanzitutto la formula del modello, da verificare (eventuali mistyping), dopodich\`{e} alcune statistiche sui residui del modello (memo: residuo=valore fittato - valore osservato), dopodich\`{e} arriva la parte interessante.
-# innanzitutto, l'intercetta \`{e} una semplice variabile matematica determinata per sottrazione, ovvero rappresenta quel valore che assume la risposta quando la predittiva \`{e} nulla; il coefficiente dell'esplicativa invece rappresenta (nel caso univariato) il coefficiente angolare della retta di regressione, ovvero la variazione determinata nella risposta da un incremento unitario della variabile esplicativa.
-# (due parole due sulla significativit\`{a} dei parametri)
-# la capacit\`{a} di adattamento del modello ai dati (e non il viceversa!) \`{e} descritta, come gi\`{a} detto, dall'R quadro. In questo caso esso \`{e} pari a 0.94, ad indicare che ben il 94\% della variabilit\`{a} totale della risposta \`{e} spiegato dal modello, ovvero viene "lasciato" al caso solo il 6\% della variabilit\`{a} della risposta.
-# (Questo sembra un risultato molto incoraggiante, ma nel caso di modelli previsivi si cerca di massimizzare la varianza spiegata, in modo da avere il minor margine di errore casuale possibile. Questo indice che sembra tanto alto viene letteralmente surclassato da un modello solo di poco più complicato, capace di portare l'R quadro a 0.98: >v=log(Volume); h=log(Height); gsq=2*log(Girth); summary(lm(v~gsq+h)) )
-# Ovviamente la rappresentazione del modello \`{e} molto intuibile, e infatti la forza della regressione lineare semplice poggia proprio sull'"occhio", ovvero \`{e} la formalizzazione di una procedura che, intuitivamente, si farebbe anche ignorando totalmente la statistica; da un punto di vista grafico infatti:
-> plot(Girth,Volume)
-# volendo interpolare questi dati, semplicemente si traccerebbe una retta, che rappresenta proprio il modello di regressione calcolato:
-> abline(model\$coefficients,col='red')
-\end{verbatim}
+\lstinputlisting{snippets/ex1.R}
 
 Dov'\`{e} quindi l'utilit\`{a} di questo strumento? L'utilit\`{a} del modello regressivo \`{e} nella formalizzazione probabilistico-matematica, nella capacit\`{a} di studiare una variabile di interesse in ambito previsivo, descrittivo e relazionale (causale), nell'aprire le porte alle possibilit\`{a} dei test statistico-inferenziali, nel costituire un semplice ed intelleggibile punto di partenza per condurre indagini che coinvolgono metodi più complessi.
 E se invece (come si accennava prima), volessimo inserire anche la variabile "altezza" tra i predittori del volume? Cosa accadrebbe al modello di regressione semplice?
