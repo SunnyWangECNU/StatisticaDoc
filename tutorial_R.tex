@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{listings}
+\usepackage{amsmath}
 \title{Appunti corso statistica ed R, prima parte}
 \author{Andrea Berardi - and.be.like@gmail.com}
 \begin{document}
@@ -58,10 +59,11 @@ La moda \`{e} semplicemente la modalit\`{a} del carattere che si presenta più f
 Una moda può essere "Q", "cercopiteco" o "42". Se nella distribuzione di riferimento esistono più mode essa si dice bimodale, trimodale, etc.
 
 Uno degli indici più utilizzato e noto \`{e} la media aritmetica semplice:
-
- $\mu_x=\sum_{i=1}^n \frac{x_i}{n}$
-
-
+\\
+\begin{math}
+ \mu_x=\sum_{i=1}^n \frac{x_i}{n}
+\end{math}
+\\
 La media \`{e} un semplicissimo indice lineare per qualsiasi carattere non qualitativo sconnesso, che sintetizza in un numero (non puro) il valore centrale della distribuzione del carattere sulle unit\`{a} osservate. Ovviamente esistono molti altri tipi di medie (geometriche, quadratiche, pesate, etc).
 
 Un altro indice particolarmente importante e robusto, per caratteri qualitativi ordinati o quantitativi, \`{e} la mediana, un indice che divide la distribuzione in due parti di uguale numerosit\`{a}; in altri termini, presenta valori inferiori alla mediana il 50\% del collettivo osservato (si taglia la funzione di ripartizione a met\`{a} lungo l'asse delle ordinate).
@@ -87,11 +89,11 @@ esempio anscombe:
 
 L'indice fondamentale di descrizione del comportamento di una distribuzione rispetto alla media \`{e} la varianza.
 La varianza indica il grado di dispersione intorno alla media della distribuzione in esame: se tutti i punti sono coincidenti questa vale 0, altrimenti una quantit\`{a} positiva.
-
-\begin{verbatim}
- *	sigma_x=sum{i from 1 to n} (x_i - mu_i)**2/(n-1)
-\end{verbatim}
-
+\\
+\begin{math}
+ \sigma_x=\sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
+\end{math}
+\\
 Tuttavia la varianza \`{e} un indice di difficile interpretazione, in parte anche per via della sua unit\`{a} di misura, il quadrato di quella di partenza. Si usa come indice equivalente la deviazione standard, che \`{e} la sua radice quadrata, in quanto essa possiede la stessa scala del carattere su cui \`{e} misurata.
 
 Tuttavia a questo livello di analisi i soli numeri, se non accompagnati da un adeguato esame grafico, possono essere fuorvianti, specialmente per quanto riguarda gli indici di dispersione. A questo riguardo:
@@ -145,11 +147,11 @@ Il concetto stesso di probabilit\`{a} \`{e} molto complesso, e diversi approcci 
 
 \subsection{La definizione classica}
 La probabilit\`{a} di un evento \`{e} il rapporto tra il numero di casi favorevoli all'evento ed il numero dei casi possibili, purch\`{e} essi siano tutti equiprobabili.
-
-\begin{verbatim}
- *	P(A)=n_A/n
-\end{verbatim}
-
+\\
+\begin{math}
+ P(A)=\frac{n_A}{n}
+\end{math}
+\\
 Questa \`{e} la prima definizione dal punto di vista cronologico, ed \`{e} quella più facilmente intuibile. E' chiarissima la sua relazione con il gioco dei dadi!
 I limiti di questo approccio sono tuttavia lampanti: il fenomeno deve essere completamente noto, i casi possibili devono essere in numero finito, e soprattutto questi devono essere equiprobabili. Inoltre, il concetto di probabilit\`{a} viene utilizzato all'interno della stessa definizione!
 Ma facciamo un esempio, considerando il lancio di un dado.
@@ -158,10 +160,10 @@ I casi possibili sono: {1, 2, 3, 4, 5, 6}, tutti equiprobabili perch\`{e} il dad
 Si ottiene quindi che i casi favorevoli all'evento {otterrò un numero pari} sono {2,4,6}, ovvero 3/6 = 0.5, ovvero si ha una probabilit\`{a} pari a 0.5 di ottenere un numero pari dal lancio di un dado bilanciato.
 Si nota che, sebbene sia di uso comune, \`{e} opportuno riferirsi alle probabilit\`{a} con frazioni piuttosto che con percentuali, in quanto il loro uso può essere spesso fuorviante e dare adito ad interpretazioni non adeguate.
 
-Da questa definizione segue che:
-1.1. la probabilit\`{a} di un evento \`{e} un numero compreso tra 0 ed 1
-1.2. la probabilit\`{a} dell'evento certo \`{e} pari ad 1
-1.3. la probabilit\`{a} di due eventi incompatibili (ovvero che non possono verificarsi contemporaneamente) \`{e} pari alla somma delle due rispettive probabilit\`{a}
+Da questa definizione segue che:\\
+1.1. la probabilit\`{a} di un evento \`{e} un numero compreso tra 0 ed 1\\
+1.2. la probabilit\`{a} dell'evento certo \`{e} pari ad 1\\
+1.3. la probabilit\`{a} di due eventi incompatibili (ovvero che non possono verificarsi contemporaneamente) \`{e} pari alla somma delle due rispettive probabilit\`{a}\\
 
 Facciamo dunque un altro esempio, sempre considerando il lancio di un dado: qual \`{e} la probabilit\`{a} di ottenere un risultato diverso da 6?
 primo approccio - i casi favorevoli all'evento sono: {1, 2, 3, 4, 5} da cui si ricava che 5/6 \`{e} la probabilit\`{a} di questo evento
@@ -170,11 +172,11 @@ Bench\`{e} questo secondo approccio sembri molto macchinoso applicato ad un caso
 
 \subsection{La definizione frequentista}
 Ipotizzando di poter ripetere lo stesso esperimento infinite volte nelle stesse condizioni, la probabilit\`{a} di un evento \`{e} il limite a cui tende la frequenza relativa dei casi favorevoli all'evento al crescere del numero degli esperimenti, ovvero
-
-\begin{verbatim}
- *	P(A)= lim{n to Inf} n_A/n
-\end{verbatim}
-
+\\
+\begin{math}
+ P(A)= \lim_{n \to \infty} \frac{n_A}{n}
+\end{math}
+\\
 Questa definizione, di facile intuizione come quella classica, supera diversi limiti: innanzitutto la definizione non \`{e} più circolare, gli eventi non devono essere in numero finito ed inoltre non devono essere tutti necessariamente equiprobabili.
 E' importante notare però che non sempre si hanno esperimenti che si possono - teoricamente - ripetere all'infinito.
 Anche da questa definizione seguono le tre propriet\`{a} della probabilit\`{a} descritte precedentemente.
