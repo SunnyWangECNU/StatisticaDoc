@@ -55,9 +55,9 @@ Una moda può essere "Q", "cercopiteco" o "42". Se nella distribuzione di riferi
 
 Uno degli indici più utilizzato e noto \`{e} la media aritmetica semplice:
 
-<code>
+\begin{verbatim}
  *	mu_x=sum{i from 1 to n} x_n over n
-</code>
+\end{verbatim}
 
 La media \`{e} un semplicissimo indice lineare per qualsiasi carattere non qualitativo sconnesso, che sintetizza in un numero (non puro) il valore centrale della distribuzione del carattere sulle unit\`{a} osservate. Ovviamente esistono molti altri tipi di medie (geometriche, quadratiche, pesate, etc).
 
@@ -68,17 +68,17 @@ Da questi valori si disegna uno dei grafici fondamentali della descrittiva, il b
 	-R-
 esempio di un boxplot:
 
-<code>
+\begin{verbatim}
 > library(datasets); attach(anscombe)
 > boxplot(y1)
-</code>
+\end{verbatim}
 
 Questo per quanto riguarda gli indici che descrivono dove si aggirano i valori medi, mediani o modali, ovvero dov'\`{e} il centro delle distribuzioni che si osservano. Ma [ESEMPI NECESSARI: anscombe!] questi valori danno solo un'idea di posizione, e non di forma. Infatti a parit\`{a} di questi indici possono corrispondere forme di distribuzioni molto diverse!
 
 	-R-
 esempio anscombe:
 
-<code>
+\begin{verbatim}
 
 > library(datasets); attach(anscombe)
 #cos'hanno in comune questi plot??
@@ -89,7 +89,7 @@ esempio anscombe:
 > plot(sort(y1)); plot(sort(y2)); plot(sort(y3)); plot(sort(y4))
 #sebbene le forme distribuzionali siano ben diverse
 
-</code>
+\end{verbatim}
 
 **NOTA: per ripristinare il parametro mfrow come al default (1 plot per window), > par(mfrow=c(1,1));
 
@@ -98,20 +98,20 @@ Indici di forma
 L'indice fondamentale di descrizione del comportamento di una distribuzione rispetto alla media \`{e} la varianza.
 La varianza indica il grado di dispersione intorno alla media della distribuzione in esame: se tutti i punti sono coincidenti questa vale 0, altrimenti una quantit\`{a} positiva.
 
-<code>
+\begin{verbatim}
  *	sigma_x=sum{i from 1 to n} (x_i - mu_i)**2/(n-1)
-</code>
+\end{verbatim}
 
 Tuttavia la varianza \`{e} un indice di difficile interpretazione, in parte anche per via della sua unit\`{a} di misura, il quadrato di quella di partenza. Si usa come indice equivalente la deviazione standard, che \`{e} la sua radice quadrata, in quanto essa possiede la stessa scala del carattere su cui \`{e} misurata.
 
 Tuttavia a questo livello di analisi i soli numeri, se non accompagnati da un adeguato esame grafico, possono essere fuorvianti, specialmente per quanto riguarda gli indici di dispersione. A questo riguardo:
 
 	-R-
-<code>
+\begin{verbatim}
 > library(datasets); attach(anscombe)
 > apply(cbind(y1,y2,y3,y4),2,sd)
 #le dev standard sono praticamente uguali...
-</code>
+\end{verbatim}
 
 oppure:
 grafici di normali... leptocurtiche, platocurtiche etc
@@ -142,7 +142,7 @@ Note sulla terminologia:
 * Goodness of fit: bont\`{a} di adattamento, ovvero capacit\`{a} del modello di adattarsi ai dati. In generale viene calcolata esaminando la distanza tra valori predetti (o teorici) dal modello e i dati osservati su cui esso \`{e} stato stimato. L'indice utilizzato nel caso della regressione \`{e} l'R quadro.
 
 
-<code>
+\begin{verbatim}
 > library(datasets)
 > data=trees
 > attach(data)
@@ -174,14 +174,14 @@ Note sulla terminologia:
 > plot(Girth,Volume)
 # volendo interpolare questi dati, semplicemente si traccerebbe una retta, che rappresenta proprio il modello di regressione calcolato:
 > abline(model\$coefficients,col='red')
-</code>
+\end{verbatim}
 
 Dov'\`{e} quindi l'utilit\`{a} di questo strumento? L'utilit\`{a} del modello regressivo \`{e} nella formalizzazione probabilistico-matematica, nella capacit\`{a} di studiare una variabile di interesse in ambito previsivo, descrittivo e relazionale (causale), nell'aprire le porte alle possibilit\`{a} dei test statistico-inferenziali, nel costituire un semplice ed intelleggibile punto di partenza per condurre indagini che coinvolgono metodi più complessi.
 E se invece (come si accennava prima), volessimo inserire anche la variabile "altezza" tra i predittori del volume? Cosa accadrebbe al modello di regressione semplice?
 Innanzitutto, la regressione passerebbe da semplice a multivariata (o multipla), tuttavia mantenendo la condizione di linearit\`{a}, essendo questa posta sui parametri. Ed ovviamente, l'interpolazione ai dati non sarebbe più rappresentabile da una retta ma, giacendo su R2, da un piano.
 Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzitutto analizzando i legami tra le variabili. (E' importante notare che le variabili esplicative devono possedere una correlazione non elevata, altrimenti ci si troverebbe in una situazione di collinearit\`{a} che invaliderebbe in toto il modello, portando a conclusioni del tutto prive di senso.)
 
-<code>
+\begin{verbatim}
 > model.2=lm(Volume ~ Girth + Height)
 > summary(model.2)
 # L'R quadro come prevedibile \`{e} aumentato, avendo inserito nel modello delle informazioni non incluse nella variabile "altezza".
@@ -191,7 +191,7 @@ Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzit
 > fit.them=function(data,model) {as.matrix(cbind(1,data))\%*\%as.matrix(model\$coefficients)}
 > fitted=matrix(fit.them(griglia,model.2),byrow=F,nrow=50)
 > persp(gg,hh,fitted,theta=-55,col='lightblue')
-</code>
+\end{verbatim}
 
 		\emph{Probabilit\`{a}}
 
@@ -201,7 +201,7 @@ Il concetto stesso di probabilit\`{a} \`{e} molto complesso, e diversi approcci 
 1. La definizione classica:
 La probabilit\`{a} di un evento \`{e} il rapporto tra il numero di casi favorevoli all'evento ed il numero dei casi possibili, purch\`{e} essi siano tutti equiprobabili.
 
-<code>
+\begin{verbatim}
  *	P(A)=n_A/n
 
 Questa \`{e} la prima definizione dal punto di vista cronologico, ed \`{e} quella più facilmente intuibile. E' chiarissima la sua relazione con il gioco dei dadi!
@@ -225,9 +225,9 @@ Bench\`{e} questo secondo approccio sembri molto macchinoso applicato ad un caso
 2. La definizione frequentista:
 Ipotizzando di poter ripetere lo stesso esperimento infinite volte nelle stesse condizioni, la probabilit\`{a} di un evento \`{e} il limite a cui tende la frequenza relativa dei casi favorevoli all'evento al crescere del numero degli esperimenti, ovvero
 
-<code>
+\begin{verbatim}
  *	P(A)= lim{n to Inf} n_A/n
-</code>
+\end{verbatim}
 
 Questa definizione, di facile intuizione come quella classica, supera diversi limiti: innanzitutto la definizione non \`{e} più circolare, gli eventi non devono essere in numero finito ed inoltre non devono essere tutti necessariamente equiprobabili.
 E' importante notare però che non sempre si hanno esperimenti che si possono - teoricamente - ripetere all'infinito.
