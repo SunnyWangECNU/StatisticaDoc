@@ -1,0 +1,3 @@
+> library(datasets); attach(anscombe)
+> apply(cbind(y1,y2,y3,y4),2,sd)
+#le dev standard sono praticamente uguali...
