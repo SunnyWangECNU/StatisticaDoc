@@ -135,17 +135,7 @@ E se invece (come si accennava prima), volessimo inserire anche la variabile "al
 Innanzitutto, la regressione passerebbe da semplice a multivariata (o multipla), tuttavia mantenendo la condizione di linearit\`{a}, essendo questa posta sui parametri. Ed ovviamente, l'interpolazione ai dati non sarebbe più rappresentabile da una retta ma, giacendo su R2, da un piano.
 Proviamo con un modello semplice per avere un'idea di ciò che succede, innanzitutto analizzando i legami tra le variabili. (E' importante notare che le variabili esplicative devono possedere una correlazione non elevata, altrimenti ci si troverebbe in una situazione di collinearit\`{a} che invaliderebbe in toto il modello, portando a conclusioni del tutto prive di senso.)
 
-\begin{verbatim}
-> model.2=lm(Volume ~ Girth + Height)
-> summary(model.2)
-# L'R quadro come prevedibile \`{e} aumentato, avendo inserito nel modello delle informazioni non incluse nella variabile "altezza".
-> hh=seq(min(Height),max(Height),length.out=50)
-> gg=seq(min(Girth),max(Girth),length.out=50)
-> griglia=expand.grid(gg,hh)
-> fit.them=function(data,model) {as.matrix(cbind(1,data))\%*\%as.matrix(model\$coefficients)}
-> fitted=matrix(fit.them(griglia,model.2),byrow=F,nrow=50)
-> persp(gg,hh,fitted,theta=-55,col='lightblue')
-\end{verbatim}
+\lstinputlisting{snippets/ex2.R}
 
 		\emph{Probabilit\`{a}}
 
